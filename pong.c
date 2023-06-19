@@ -8,10 +8,20 @@
 #define PADDLEH 100
 #define BALLRADIUS 10
 
+// Custom Structs
+
 typedef struct {
   float dx;
   float dy;
 } MotionVec;
+
+// Function Prototypes
+
+void resetBallPos(Vector2* posVec, MotionVec* motionVec);
+void moveBall(Vector2* ball, MotionVec* mv);
+void moveAi(Rectangle * AiPaddle, Vector2 * ball, MotionVec * mv);
+
+// Implementation
 
 void resetBallPos(Vector2* posVec, MotionVec* motionVec) {
   posVec->x = WIDTH/2;
@@ -32,7 +42,7 @@ void moveAi(Rectangle * AiPaddle, Vector2 * ball, MotionVec * mv) {
   // 1.5 seems to be a good middle ground. The movement is not too glitchy and 
   // it doesn't make the game impossible.
   // When it's around 3 it becomes impossible to get any points
-  const float speedScalar = 1.5 f;
+  const float speedScalar = 1.5f;
 
   // ball moving left
   if (mv -> dx < 0) {
