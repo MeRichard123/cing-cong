@@ -25,43 +25,44 @@ void moveBall(Vector2* ball, MotionVec* mv) {
   ball->y += mv->dy;
 }
 
-void moveAi(Rectangle* AiPaddle, Vector2* ball, MotionVec* mv) {
-  int paddleCenter = AiPaddle->y + (AiPaddle->height / 2);
+void moveAi(Rectangle * AiPaddle, Vector2 * ball, MotionVec * mv) {
+  int paddleCenter = AiPaddle -> y + (AiPaddle -> height / 2);
   int screenCenter = HEIGHT / 2;
-  int ballSpeed = mv->dy;
+  int ballSpeed = mv -> dy;
   // 1.5 seems to be a good middle ground. The movement is not too glitchy and 
   // it doesn't make the game impossible.
   // When it's around 3 it becomes impossible to get any points
-  const float speedScalar = 1.5f;
+  const float speedScalar = 1.5 f;
 
   // ball moving left
-  if (mv->dx < 0) {
-    if (AiPaddle->y < HEIGHT){
-       if (paddleCenter < screenCenter) { 
-          AiPaddle->y += ballSpeed + speedScalar;  
-       } else {
-          AiPaddle->y -= ballSpeed + speedScalar;
-       }
+  if (mv -> dx < 0) {
+    if (AiPaddle -> y < HEIGHT) {
+      if (paddleCenter < screenCenter) {
+        AiPaddle -> y += ballSpeed + speedScalar;
+      } else {
+        AiPaddle -> y -= ballSpeed + speedScalar;
+      }
     }
   }
   // ball moving right 
   else {
-    if (mv->dy > 0) {
-      if (ball->y > paddleCenter + (AiPaddle->height/2)) {
-        AiPaddle->y += ballSpeed + speedScalar;
-      }else {
-        AiPaddle->y -= ballSpeed + speedScalar;
+    if (mv -> dy > 0) {
+      if (ball -> y > paddleCenter + (AiPaddle -> height / 2)) {
+        AiPaddle -> y += ballSpeed + speedScalar;
+      } else {
+        AiPaddle -> y -= ballSpeed + speedScalar;
       }
     }
-	  if (mv->dy < 0) {
-      if (ball->y < paddleCenter) { 
-          AiPaddle->y -= ballSpeed + speedScalar;
+    if (mv -> dy < 0) {
+      if (ball -> y < paddleCenter) {
+        AiPaddle -> y -= ballSpeed + speedScalar;
       } else {
-          AiPaddle->y += ballSpeed + speedScalar;
-        }
+        AiPaddle -> y += ballSpeed + speedScalar;
+      }
     }
-	}
+  }
 }
+
 
 int main(void) {
   int score = 00;
