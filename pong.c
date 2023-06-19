@@ -16,6 +16,7 @@ typedef struct {
 void resetBallPos(Vector2* posVec, MotionVec* motionVec) {
   posVec->x = WIDTH/2;
   posVec->y = HEIGHT/2;
+  // invert direction so each time is goes on a different side
   motionVec->dx = -motionVec->dx;
 }
 
